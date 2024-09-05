@@ -4,10 +4,10 @@ import fs from "fs";
 import cors from "cors";
 import { GPTScript, RunEventType } from "@gptscript-ai/gptscript";
 
-const gptscript = new GPTScript();
-
 const app = express();
 app.use(cors());
+
+const gptscript = new GPTScript();
 
 app.get("/test", (req, res) => {
   return res.json("testing");
