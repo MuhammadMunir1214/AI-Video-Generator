@@ -1,4 +1,4 @@
-{ "dependencies": { "cors": "^2.8.5", "express": "^4.19.2", "nodemon": "^3.1.4" }, "name": "backend", "module": "index.js", "type": "module", "devDependencies": {
+{ "dependencies": { "@gptscript-ai/gptscript": "^0.9.5-rc5", "cors": "^2.8.5", "express": "^4.19.2", "nodemon": "^3.1.4", "uniqid": "^5.4.0" }, "name": "backend", "module": "index.js", "type": "module", "devDependencies": {
   "@types/bun": "latest"
 }, "peerDependencies": {
   "typescript": "^5.0.0"
