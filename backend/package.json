@@ -1,5 +1,23 @@
-{ "dependencies": { "@gptscript-ai/gptscript": "^0.9.5-rc5", "cors": "^2.8.5", "express": "^4.19.2", "nodemon": "^3.1.4", "uniqid": "^5.4.0" }, "name": "backend", "module": "index.js", "type": "module", "devDependencies": {
-  "@types/bun": "latest"
-}, "peerDependencies": {
-  "typescript": "^5.0.0"
-} }
+{
+  "dependencies": {
+    "@gptscript-ai/gptscript": "^0.9.5-rc5",
+    "@mozilla/readability": "^0.5.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsdom": "^25.0.0",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.4",
+    "openai": "^4.58.1",
+    "readability": "^0.1.0",
+    "uniqid": "^5.4.0"
+  },
+  "name": "backend",
+  "module": "index.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
