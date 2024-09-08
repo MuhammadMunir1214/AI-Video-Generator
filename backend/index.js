@@ -7,7 +7,7 @@ import { GPTScript, RunEventType } from "@gptscript-ai/gptscript";
 const app = express();
 app.use(cors());
 
-const gptscript = new GPTScript();
+const g = new GPTScript();
 
 app.get("/test", (req, res) => {
   return res.json("testing");
@@ -23,18 +23,28 @@ app.get("/create-story", async (req, res) => {
     url,
   });
 
-  const run = await gptscript.run("./story.gpt", {
-    input: "--url ${url} --dir ${dir}",
+  const opts = {
+    input: `--url ${url} --dir ${path}`,
     disableCache: true,
-  });
-  run.on(RunEventType.Event, (ev) => {
-    if (ev.type === RunEventType.CallFinish) {
-      console.log(ev.output);
-    }
-  });
-  const result = await run.text();
+    model: "gpt-4o-mini",
+  };
 
-  return res.json(result);
+  console.log("Options:", opts); // Log the options to verify
+  console.log("Using model:", g.model);
+
+  try {
+    const run = await g.run("./story.gpt", opts);
+    run.on(RunEventType.Event, (ev) => {
+      if (ev.type === RunEventType.CallFinish && ev.output) {
+        console.log(ev.output);
+      }
+    });
+    const result = await run.text();
+    return res.json(result);
+  } catch (e) {
+    console.error(e);
+    return res.json("error");
+  }
 });
 
 app.listen(8080, () => console.log("listening on port 8080"));
