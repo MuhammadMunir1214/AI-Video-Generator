@@ -5,13 +5,14 @@ import cors from "cors";
 import { GPTScript, RunEventType } from "@gptscript-ai/gptscript";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
-import fetch from "node-fetch"; // Ensure you have node-fetch installed: npm install node-fetch
+import fetch from "node-fetch";
 
 const app = express();
 app.use(cors());
 
 const g = new GPTScript();
 
+// Test endpoint
 app.get("/test", (req, res) => {
   return res.json("testing");
 });
@@ -53,8 +54,12 @@ app.get("/create-story", async (req, res) => {
       return res.status(500).json({ error: "Failed to extract main content" });
     }
 
+    // Limit the content to a specific length to avoid token overflow
+    const maxLength = 5000; // Adjust this limit as needed
+    const truncatedContent = articleContent.substring(0, maxLength);
+
     const opts = {
-      input: `--content "${articleContent}" --dir ${path}`,
+      input: `--content "${truncatedContent}" --dir ${path}`,
       disableCache: true,
     };
 
