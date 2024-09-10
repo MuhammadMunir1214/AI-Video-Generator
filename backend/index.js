@@ -6,11 +6,15 @@ import { GPTScript, RunEventType } from "@gptscript-ai/gptscript";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
 import fetch from "node-fetch";
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const app = express();
 app.use(cors());
 
-const g = new GPTScript();
+const g = new GPTScript({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 // Test endpoint
 app.get("/test", (req, res) => {
@@ -64,6 +68,7 @@ app.get("/create-story", async (req, res) => {
     };
 
     console.log("Options:", opts); // Log the options to verify
+    console.log("Using OpenAI API Key:", process.env.OPENAI_API_KEY);
 
     const run = await g.run("./story.gpt", opts);
     run.on(RunEventType.Event, (ev) => {
