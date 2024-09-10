@@ -17,7 +17,7 @@ const g = new GPTScript({
   model: "gpt-4o-mini-2024-07-18",
 });
 
-// Test endpoint
+//Test endpoint
 app.get("/test", (req, res) => {
   return res.json("testing");
 });
