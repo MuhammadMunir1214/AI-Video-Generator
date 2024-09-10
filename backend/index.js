@@ -47,8 +47,8 @@ async function extractMainContent(url) {
 
 // Route to handle the creation of a story from the URL provided as a query parameter
 app.get("/create-story", async (req, res) => {
-  const url = req.query.url;
-  const dir = uniqid();
+  const url = req.query.url; // Retrieve the 'url' query parameter from the request
+  const dir = uniqid(); // Generate a unique directory name using uniqid
   const path = "./stories/" + dir;
   fs.mkdirSync(path, { recursive: true });
 
@@ -61,17 +61,18 @@ app.get("/create-story", async (req, res) => {
       return res.status(500).json({ error: "Failed to extract main content" });
     }
 
-    // Limit the content to a specific length to avoid token overflow
+    // Limit the article content length to avoid exceeding token limits in GPT requestsw
     const maxLength = 4000;
-    const truncatedContent = articleContent.substring(0, maxLength);
+    const truncatedContent = articleContent.substring(0, maxLength); // Truncate content if it exceeds maxLength
 
     const opts = {
       input: `--content "${truncatedContent}" --dir ${path}`,
       disableCache: true,
     };
 
-    console.log("Options:", opts); // Log the options to verify
+    console.log("Options:", opts);
 
+    // Listen for events emitted during the script execution, such as when a tool finishes
     const run = await g.run("./story.gpt", opts);
     run.on(RunEventType.Event, (ev) => {
       if (ev.type === RunEventType.CallFinish && ev.output) {
