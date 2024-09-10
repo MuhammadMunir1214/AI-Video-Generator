@@ -1,11 +1,11 @@
 import express from "express";
 import uniqid from "uniqid";
-import fs from "fs";
-import cors from "cors";
+import fs from "fs"; // FS (File System): To interact with the file system for creating directories and writing files
+import cors from "cors"; // CORS: Middleware for handling Resource Sharing, allowing the server to accept requests from different origins
 import { GPTScript, RunEventType } from "@gptscript-ai/gptscript";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
-import fetch from "node-fetch";
+import fetch from "node-fetch"; // Node-fetch: Allows making HTTP requests (for fetching web page content)
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -76,7 +76,7 @@ app.get("/create-story", async (req, res) => {
     const run = await g.run("./story.gpt", opts);
     run.on(RunEventType.Event, (ev) => {
       if (ev.type === RunEventType.CallFinish && ev.output) {
-        console.log(ev.output);
+        console.log(ev.output); // Log the output from the GPTScript when a step is completed
       }
     });
     const result = await run.text();
