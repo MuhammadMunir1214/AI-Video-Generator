@@ -4,10 +4,10 @@ tools: github.com/gptscript-ai/image-generation
 tools: github.com/nw0rn/text2speech-gptscript
 args: url: Link to the article or page
 args: dir: Directory to save the files to
+globalmodel: gpt-4o-mini
 
 1. Browse to ${url} and read the page contents throughly.
 2. Create a tldr text version of it for an instagram reel or a tiktok video. No Emojis, max 100 words.
 3. Split the created text into 3 parts, save the texts to "${dir}/story-${INDEX}.txt"
 4. For each text part, come up with a keyword or a phrase for a 1024x1792 b-roll image, generate and save them to: "${dir}/b-roll-${INDEX}.png." Make sure the file size is small. Do not use too many tokens when generating the images.
 5. For each text part, generate speech files and save them to "${dir}/voiceover-${INDEX}". Don't pass the file type, use the default value.
-6. 

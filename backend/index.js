@@ -6,14 +6,15 @@ import { GPTScript, RunEventType } from "@gptscript-ai/gptscript";
 import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
 import fetch from "node-fetch";
-// import dotenv from "dotenv";
-// dotenv.config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(cors());
 
 const g = new GPTScript({
   apiKey: process.env.OPENAI_API_KEY,
+  Model: "gpt-4o-mini",
 });
 
 // Test endpoint
