@@ -1,9 +1,0 @@
-tools: sys.write, sys.read, sys.download, sys.find, 
-tools: github.com/gptscript-ai/browser
-
-model: gpt-4o-mini-2024-07-18
-
-
-4. For each text part, come up with a keyword or a phrase for a 1024x1792 b-roll image, generate and save them to: "${dir}/b-roll-${INDEX}.png." Make sure the file size is small. Do not use too many tokens when generating the images.
-5. For each text part, generate speech files and save them to "${dir}/voiceover-${INDEX}". Don't pass the file type, use the default value.
-

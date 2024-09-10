@@ -14,7 +14,7 @@ app.use(cors());
 
 const g = new GPTScript({
   apiKey: process.env.OPENAI_API_KEY,
-  Model: "gpt-4o-mini",
+  model: "gpt-4o-mini-2024-07-18",
 });
 
 // Test endpoint
@@ -60,7 +60,7 @@ app.get("/create-story", async (req, res) => {
     }
 
     // Limit the content to a specific length to avoid token overflow
-    const maxLength = 5000; // Adjust this limit as needed
+    const maxLength = 4000;
     const truncatedContent = articleContent.substring(0, maxLength);
 
     const opts = {
@@ -69,7 +69,6 @@ app.get("/create-story", async (req, res) => {
     };
 
     console.log("Options:", opts); // Log the options to verify
-    console.log("Using OpenAI API Key:", process.env.OPENAI_API_KEY);
 
     const run = await g.run("./story.gpt", opts);
     run.on(RunEventType.Event, (ev) => {
