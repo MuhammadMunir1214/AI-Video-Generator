@@ -33,6 +33,7 @@ async function extractMainContent(url) {
     const reader = new Readability(dom.window.document);
     const article = reader.parse();
 
+    // Return the clean text content of the article if it was successfully parsed
     if (article && article.textContent) {
       return article.textContent; // Return the clean article text
     } else {
@@ -44,6 +45,7 @@ async function extractMainContent(url) {
   }
 }
 
+// Route to handle the creation of a story from the URL provided as a query parameter
 app.get("/create-story", async (req, res) => {
   const url = req.query.url;
   const dir = uniqid();
