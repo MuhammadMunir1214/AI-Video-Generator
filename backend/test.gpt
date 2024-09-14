@@ -15,4 +15,3 @@ args: dir: Directory to save the files to
 6. After the mp3 files have been saved, run speech2text for all 3 *.mp3 files inside ${dir} and save results to 3 separate files in ${dir}/transcription-${INDEX}.txt.
 
 .
-.
