@@ -13,3 +13,4 @@ args: dir: Directory to save the files to
 4. For each text part, come up with a keyword or a phrase for a 1024x1792 b-roll image, generate and save the images them to: "${dir}/b-roll-${INDEX}.png" Make sure you download and save the image as a binary file, not the URL.
 5. For each text part, generate speech files and save them to: "${dir}/voiceover-${INDEX}". Don't pass the file type, use the default value. Save the files before moving to the next step.
 6. After the mp3 files have been saved, run speech2text for all 3 *.mp3 files inside ${dir} and save results to 3 separate files in ${dir}/transcription-${INDEX}.txt.
+default
