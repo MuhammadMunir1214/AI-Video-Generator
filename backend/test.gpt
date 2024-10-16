@@ -14,3 +14,4 @@ args: dir: Directory to save the files to
 5. For each text part, generate speech files and save them to: "${dir}/voiceover-${INDEX}". Don't pass the file type, use the default value. Save the files before moving to the next step.
 6. After the mp3 files have been saved, run speech2text for all 3 *.mp3 files inside ${dir} and save results to 3 separate files in ${dir}/transcription-${INDEX}.txt.
 fdsafsdfdfsdfdsf
+dfsafa
